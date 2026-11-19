@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="firestore_database_id" translatable="false">ai-studio-android-chronosa-49d7022d-e269-47a6-af0f-cb42e5a8e5b5</string>
+    <string name="recaptcha_site_key" translatable="false">6LfjvycuAAAAAFCia1xFPF9X01ZWzos4QH3An3xZ</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CalSnap</string>
+    <string name="tagline">Snap a meal. Master your macros.</string>
+    <string name="sign_in_google">Continue with Google</string>
+    <string name="nav_today">Today</string>
+    <string name="nav_scan">Scan</string>
+    <string name="nav_progress">Progress</string>
+    <string name="nav_goals">Goals</string>
+    <string name="empty_meals_title">No meals logged yet</string>
+    <string name="empty_meals_subtitle">Snap a photo or describe what you ate to calculate calories and macros in seconds.</string>
+    <string name="camera_permission_rationale">Camera access lets CalSnap capture meal photos directly. You can also pick photos from your gallery anytime.</string>
+</resources>

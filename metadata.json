@@ -1,0 +1,6 @@
+{
+  "name": "CalSnap",
+  "description": "AI-powered calorie and macro tracker with instant meal photo and text nutrition analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

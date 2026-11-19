@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User nutrition targets, body metrics, and goal preferences.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID." },
+        "displayName": { "type": "string", "description": "User display name." },
+        "calorieGoal": { "type": "integer", "description": "Daily calorie target in kcal." },
+        "proteinGoalG": { "type": "integer", "description": "Daily protein target in grams." },
+        "carbsGoalG": { "type": "integer", "description": "Daily carbohydrate target in grams." },
+        "fatGoalG": { "type": "integer", "description": "Daily fat target in grams." },
+        "waterGoalMl": { "type": "integer", "description": "Daily hydration goal in milliliters." },
+        "currentWeightKg": { "type": "number", "description": "Current weight in kilograms." },
+        "targetWeightKg": { "type": "number", "description": "Goal weight in kilograms." },
+        "heightCm": { "type": "number", "description": "Height in centimeters." },
+        "age": { "type": "integer", "description": "Age in years." },
+        "sex": { "type": "string", "enum": ["male", "female"], "description": "Biological sex for Mifflin-St Jeor calculation." },
+        "activityLevel": { "type": "string", "enum": ["sedentary", "light", "moderate", "active", "athlete"], "description": "Weekly activity multiplier tier." },
+        "goalType": { "type": "string", "enum": ["lose", "maintain", "gain"], "description": "Primary weight direction." },
+        "useMetricUnits": { "type": "boolean", "description": "True for metric units (kg/cm), false for imperial (lbs/in)." },
+        "onboardingDone": { "type": "boolean", "description": "Whether initial goal setup was completed." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation (FieldValue.serverTimestamp())." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on last update (FieldValue.serverTimestamp())." }
+      },
+      "required": [
+        "userId",
+        "displayName",
+        "calorieGoal",
+        "proteinGoalG",
+        "carbsGoalG",
+        "fatGoalG",
+        "waterGoalMl",
+        "currentWeightKg",
+        "targetWeightKg",
+        "heightCm",
+        "age",
+        "sex",
+        "activityLevel",
+        "goalType",
+        "useMetricUnits",
+        "onboardingDone",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MealEntry": {
+      "title": "MealEntry",
+      "description": "Logged meal with AI-analyzed or edited calories, macros, ingredients, and health score.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID." },
+        "dateKey": { "type": "string", "description": "Local calendar date key in yyyy-MM-dd format." },
+        "name": { "type": "string", "description": "Meal title." },
+        "mealType": { "type": "string", "enum": ["breakfast", "lunch", "dinner", "snack"], "description": "Meal period category." },
+        "calories": { "type": "integer", "description": "Total calories in kcal." },
+        "proteinG": { "type": "integer", "description": "Protein in grams." },
+        "carbsG": { "type": "integer", "description": "Carbohydrates in grams." },
+        "fatG": { "type": "integer", "description": "Fat in grams." },
+        "fiberG": { "type": "integer", "description": "Dietary fiber in grams." },
+        "healthScore": { "type": "integer", "description": "Meal nutrition quality score from 1 to 10." },
+        "servingMultiplier": { "type": "number", "description": "Portion scale multiplier applied to base values." },
+        "inputSource": { "type": "string", "enum": ["photo", "text", "manual"], "description": "How the meal was logged." },
+        "aiNotes": { "type": "string", "description": "Concise AI nutritional tip or portion note." },
+        "ingredients": { "type": "array", "description": "Bounded list of itemized ingredient breakdown strings (max 20)." },
+        "loggedAtEpochMs": { "type": "integer", "description": "Client epoch milliseconds when meal was logged." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation (FieldValue.serverTimestamp())." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on last update (FieldValue.serverTimestamp())." }
+      },
+      "required": [
+        "userId",
+        "dateKey",
+        "name",
+        "mealType",
+        "calories",
+        "proteinG",
+        "carbsG",
+        "fatG",
+        "fiberG",
+        "healthScore",
+        "servingMultiplier",
+        "inputSource",
+        "aiNotes",
+        "ingredients",
+        "loggedAtEpochMs",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DailyWaterLog": {
+      "title": "DailyWaterLog",
+      "description": "Daily hydration intake keyed by yyyy-MM-dd.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID." },
+        "waterMl": { "type": "integer", "description": "Consumed water in milliliters." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation (FieldValue.serverTimestamp())." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on last update (FieldValue.serverTimestamp())." }
+      },
+      "required": ["userId", "waterMl", "createdAt", "updatedAt"]
+    },
+    "WeightEntry": {
+      "title": "WeightEntry",
+      "description": "User body weight check-in entry.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID." },
+        "weightKg": { "type": "number", "description": "Logged weight in kilograms." },
+        "dateKey": { "type": "string", "description": "Local calendar date key in yyyy-MM-dd format." },
+        "note": { "type": "string", "description": "Optional short note for check-in." },
+        "recordedAtEpochMs": { "type": "integer", "description": "Epoch milliseconds of check-in." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation (FieldValue.serverTimestamp())." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on last update (FieldValue.serverTimestamp())." }
+      },
+      "required": ["userId", "weightKg", "dateKey", "note", "recordedAtEpochMs", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/profile/{profileId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Per-user nutrition goals and calculator profile (document id 'goals')."
+    },
+    "/users/{userId}/meals/{mealId}": {
+      "schema": { "$ref": "#/entities/MealEntry" },
+      "description": "Per-user logged meals with AI nutrition breakdowns."
+    },
+    "/users/{userId}/dailyLogs/{dateKey}": {
+      "schema": { "$ref": "#/entities/DailyWaterLog" },
+      "description": "Per-user daily hydration totals keyed by yyyy-MM-dd."
+    },
+    "/users/{userId}/weights/{weightId}": {
+      "schema": { "$ref": "#/entities/WeightEntry" },
+      "description": "Per-user historical weight check-ins."
+    }
+  }
+}
